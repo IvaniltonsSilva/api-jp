@@ -15,10 +15,9 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
-    // Inicia os IDs que vimos nos seus prints
-    fbq('init', '1557155878800203'); // Pixel 1
-    fbq('init', '1754894198818042'); // Pixel 2
-    fbq('init', 'SEU_TERCEIRO_ID');    // Pixel 3 (substitua)
+    fbq('init', '1557155878800203'); 
+    fbq('init', '1754894198818042'); 
+    fbq('init', '1251810006927464'); 
 
     fbq('track', 'PageView');
     </script>
@@ -45,10 +44,14 @@
             max-width: 500px;
             height: 100vh;
             position: relative;
-            /* Ajustei o gradiente para não "sujar" as cores do topo */
+            /* Fundo com imagem e gradiente para escurecer a base */
             background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.9) 80%), url('5.png');
-            background-size: 100%;
-            background-position: center;
+            
+            /* AJUSTE DA IMAGEM: Sem repetição e zoom controlado */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center top; /* Foca no topo da imagem para diminuir o zoom no rosto */
+            
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -57,15 +60,14 @@
         }
 
         .headline-container {
-            background-color: #FFFFF; /* Vermelho Puro */
+            background-color: #ff0000; /* Corrigido para Vermelho para combinar com o botão */
             padding: 15px;
             margin-bottom: 20px;
-            /* Removi o skew para os nomes ficarem retos e legíveis se preferir, ou mantenha: */
             border-radius: 4px;
         }
 
         .headline-text {
-            color: #ffffff !important; /* Força o branco puro */
+            color: #ffffff !important;
             font-size: 26px;
             font-weight: 900;
             text-transform: uppercase;
@@ -73,14 +75,19 @@
         }
 
         .description {
-            background-color: #ffffff;
-            color: #000000 !important; /* Força o preto puro */
+            background-color: #ffffff; /* Corrigido de #FFFFF para #FFFFFF */
+            color: #000000 !important;
             font-size: 15px;
             font-weight: bold;
             padding: 12px 15px;
             margin-bottom: 30px;
             line-height: 1.4;
             border-radius: 8px;
+        }
+
+        .highlight-red {
+            color: #ff0000 !important;
+            font-weight: 900;
         }
 
         .btn-entrar {
@@ -119,10 +126,8 @@
             margin-left: -12px;
         }
         .avatars img:first-child { margin-left: 0; }
-        .proof-text { font-size: 13px; color: #eee; font-weight: bold; } .highlight-red {
-    color: #ff0000 !important;
-    font-weight: 900;
-}
+        
+        .proof-text { font-size: 13px; color: #eee; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -151,23 +156,10 @@
 
     <script>
     function trackClick() {
-        // Dispara Lead para todos os Pixels iniciados no topo
         fbq('track', 'Lead');
         console.log("Lead disparado!");
     }
     </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
